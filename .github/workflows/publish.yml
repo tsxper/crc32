@@ -6,6 +6,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env: 
+      CI_COMMIT_EMAIL: username@users.noreply.github.com
+      CI_COMMIT_AUTHOR: CI Bot
     steps:
       - uses: actions/checkout@v4
 
@@ -27,6 +30,8 @@ jobs:
           echo "version=v$(npm pkg get version | tr -d '\"')" >> $GITHUB_OUTPUT
       - name: Tag the commit
         run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
           next_version=${{ steps.get_tag.outputs.version }}
           git tag -a "$next_version" -m "V $next_version"
           git push origin "$next_version"
