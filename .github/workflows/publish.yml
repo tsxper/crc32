@@ -4,11 +4,26 @@ on:
     branches:
       - 'main'
 jobs:
-  publish:
+  tag:
     runs-on: ubuntu-latest
     env: 
       CI_COMMIT_EMAIL: username@users.noreply.github.com
       CI_COMMIT_AUTHOR: CI Bot
+    steps:
+      - name: Get tag
+        id: get_tag
+        run: |
+          echo "version=v$(npm pkg get version | tr -d '\"')" >> $GITHUB_OUTPUT
+      - name: Tag the commit
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
+          next_version=${{ steps.get_tag.outputs.version }}
+          git tag -a "$next_version" -m "V $next_version"
+          git push origin "$next_version"
+  publish:
+    runs-on: ubuntu-latest
+    needs: tag
     steps:
       - uses: actions/checkout@v4
 
@@ -24,14 +39,3 @@ jobs:
       - run: yarn pub
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Get tag
-        id: get_tag
-        run: |
-          echo "version=v$(npm pkg get version | tr -d '\"')" >> $GITHUB_OUTPUT
-      - name: Tag the commit
-        run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
-          next_version=${{ steps.get_tag.outputs.version }}
-          git tag -a "$next_version" -m "V $next_version"
-          git push origin "$next_version"
