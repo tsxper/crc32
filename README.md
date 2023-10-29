@@ -1,9 +1,11 @@
 # CRC32
 Cycle Redundancy Check 32.
 
-Calculates unsigned CRC32 32 bit checksum for 0x04C11DB7 polynomial.
+Calculates unsigned CRC32 32 bit checksum for ***0x04C11DB7*** polynomial.
 
 ***Browser and NodeJS compatible.***
+
+TypeScript type definitions are included.
 
 ## Transitive Dependencies
 
