@@ -1,6 +1,6 @@
 {
   "name": "@tsxper/crc32",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Calculates unsigned CRC32.",
   "author": "TSXPER",
   "license": "MIT",
@@ -32,5 +32,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "keywords": ["crc32"]
 }
