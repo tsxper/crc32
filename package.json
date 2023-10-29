@@ -1,6 +1,6 @@
 {
   "name": "@tsxper/crc32",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calculates unsigned CRC32.",
   "author": "TSXPER",
   "license": "MIT",
@@ -14,11 +14,11 @@
   "scripts": {
     "test": "jest",
     "test:ci": "jest --ci",
-    "e2e": "yarn prepublish && cd e2e && yarn link-local && yarn test",
+    "e2e": "yarn prepub && cd e2e && yarn link-local && yarn test",
     "build": "rm -rf ./dist && npm run build:types && tsc $npm_package_config_build tsconfig.esm.json && tsc $npm_package_config_build tsconfig.cjs.json",
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir ./dist/types",
     "prepub": "cp ./package.json ./dist && cp ./LICENSE ./dist && cp ./README.md ./dist && cp ./.npmrc.tpl ./dist/.npmrc && cp ./package.module.json ./dist/esm/package.json",
-    "pub": "npm run prepublish && cd ./dist && npm publish"
+    "pub": "npm run prepub && cd ./dist && npm publish"
   },
   "config": {
     "build": "--project"
