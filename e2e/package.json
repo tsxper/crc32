@@ -1,0 +1,12 @@
+{
+  "name": "e2e",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "author": "TSXPER",
+  "license": "MIT",
+  "scripts": {
+    "test": "npx jest --ci --testMatch '**/test.*.js' && node test.esm.mjs",
+    "link-local": "cd ../dist && npm link && cd ../e2e && rm -rf node_modules && npm link @tsxper/crc32"
+  }
+}
