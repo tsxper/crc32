@@ -1,7 +1,7 @@
 {
   "name": "@tsxper/crc32",
-  "version": "2.0.0",
-  "description": "Calculates unsigned CRC32.",
+  "version": "2.0.1",
+  "description": "Calculates unsigned CRC32. Optimized Cycle Redundancy Check.",
   "author": "TSXPER",
   "license": "MIT",
   "homepage": "https://github.com/tsxper/crc32",
