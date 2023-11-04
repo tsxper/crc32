@@ -4,6 +4,8 @@ Cycle Redundancy Check 32 (CRC32).
 
 Calculates unsigned 32 bit checksum for ***0xEDB88320*** polynomial.
 
+Speed optimization is done through using pre-calculated values from lookup tables.
+
 ### Compatibility
 
 ```JavaScript
@@ -72,7 +74,7 @@ See "Compatibility".
   <script type="importmap">
     {
       "imports": {
-        "@tsxper/crc32": "https://www.unpkg.com/@tsxper/crc32@1.0.5/esm/CRC32.js"
+        "@tsxper/crc32": "https://www.unpkg.com/@tsxper/crc32@2.0.0/esm/CRC32.js"
       }
     }
   </script>
