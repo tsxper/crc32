@@ -20,7 +20,7 @@ jobs:
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "${{ env.CI_COMMIT_EMAIL }}"
           next_version=${{ steps.get_tag.outputs.version }}
-          git tag -a "$next_version" -m "V $next_version"
+          git tag -a "$next_version" -m "Version $next_version"
           git push origin "$next_version"
   publish:
     runs-on: ubuntu-latest

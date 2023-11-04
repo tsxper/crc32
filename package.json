@@ -1,22 +1,26 @@
 {
   "name": "@tsxper/crc32",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Calculates unsigned CRC32.",
   "author": "TSXPER",
   "license": "MIT",
   "homepage": "https://github.com/tsxper/crc32",
   "exports": {
-    "import": "./esm/CRC32.js",
-    "require": "./cjs/CRC32.js",
-    "default": "./esm/CRC32.js"
+    "import": "./esm/index.js",
+    "require": "./cjs/index.js",
+    "default": "./esm/index.js"
   },
+  "main": "./esm/index.js",
   "types": "./types/CRC32.d.ts",
   "scripts": {
     "test": "jest",
     "test:ci": "jest --ci",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "e2e": "yarn prepub && cd e2e && yarn link-local && yarn test",
-    "build": "rm -rf ./dist && npm run build:types && tsc $npm_package_config_build tsconfig.esm.json && tsc $npm_package_config_build tsconfig.cjs.json",
+    "build": "rm -rf ./dist && npm run build:types && tsc $npm_package_config_build tsconfig.esm.json && tsc $npm_package_config_build tsconfig.cjs.json && npm run build:fix:esm",
     "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir ./dist/types",
+    "build:fix:esm": "sh esm_fix.sh",
     "prepub": "cp ./package.json ./dist && cp ./LICENSE ./dist && cp ./README.md ./dist && cp ./.npmrc.tpl ./dist/.npmrc && cp ./package.module.json ./dist/esm/package.json",
     "pub": "npm run prepub && cd ./dist && npm publish"
   },
@@ -25,6 +29,9 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.53.0",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
@@ -33,5 +40,17 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["crc32"]
+  "keywords": [
+    "crc32",
+    "string",
+    "buffer",
+    "uint8array",
+    "file",
+    "readable",
+    "stream",
+    "typescript",
+    "commonjs",
+    "esm",
+    "cjs"
+  ]
 }
