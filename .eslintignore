@@ -1,0 +1,6 @@
+dist
+e2e
+.github
+**/*.js
+__tests__
+*.spec.ts

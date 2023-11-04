@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <p>Calculating crc32 for text "hello crc32": <span id="placeholder"></span></p>
+  <script type="importmap">
+    {
+      "imports": {
+        "@tsxper/crc32": "https://www.unpkg.com/@tsxper/crc32@1.0.5/esm/CRC32.js"
+      }
+    }
+  </script>
+  <script type="module">
+    import { CRC32 } from "@tsxper/crc32";
+    const crc32 = new CRC32();
+    const crc = crc32.calculate("hello crc32");
+    document.getElementById('placeholder').innerText = crc;
+  </script>
+</body>
+</html>
