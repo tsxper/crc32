@@ -6,6 +6,8 @@ Calculates unsigned 32 bit checksum for ***0xEDB88320*** polynomial.
 
 Speed optimization is done through using pre-calculated values from lookup tables.
 
+[Release Notes](./NOTES.md).
+
 ### Compatibility
 
 ```JavaScript
