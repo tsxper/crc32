@@ -1,0 +1,9 @@
+{
+  "src": "./tests/**/*.js",
+  "browsers": [
+    "chrome"
+  ],
+  "stopOnFirstFail": true,
+  "disableScreenshots": true,
+  "disableMultipleWindows": true
+}

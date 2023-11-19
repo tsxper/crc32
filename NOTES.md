@@ -1,5 +1,16 @@
 # RELEASE NOTES
 
+## v2.0.2
+
+### Added
+
+- Performance measurements.
+- Automated in-browser test.
+
+### Improved
+
+- Overall performance.
+
 ## v2.0.1
 
 ### Added

@@ -31,8 +31,7 @@ export class CRC32 {
     let crc = accumulator || this.initialCRC;
     for (const byte of bytes) {
       const tableIndex = (crc ^ byte) & 0xFF;
-      const tableVal = this.lookupTable?.[tableIndex];
-      if (tableVal === undefined) throw new Error('tableIndex out of range 0-255');
+      const tableVal = this.lookupTable[tableIndex] as number;
       crc = (crc >>> 8) ^ tableVal;
     }
     return crc;
@@ -51,8 +50,6 @@ export class CRC32 {
     if (num >= 0) {
       return num;
     }
-    const a = new Uint32Array(1);
-    a[0] = num;
-    return a[0];
+    return 0xFFFFFFFF - (num * -1) + 1;
   }
 }
