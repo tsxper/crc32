@@ -1,8 +1,8 @@
 {
   "name": "@tsxper/crc32",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Calculates unsigned CRC32. Optimized Cycle Redundancy Check.",
-  "author": "TSXPER",
+  "author": "Vladyslav Babak",
   "license": "MIT",
   "homepage": "https://github.com/tsxper/crc32",
   "exports": {
@@ -15,6 +15,8 @@
   "scripts": {
     "test": "jest",
     "test:ci": "jest --ci",
+    "test:performance:file": "node ./performance/FileRate.js",
+    "test:performance:ops": "node ./performance/Operations.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "e2e": "yarn prepub && cd e2e && yarn link-local && yarn test",

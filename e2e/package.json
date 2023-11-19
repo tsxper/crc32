@@ -6,7 +6,8 @@
   "author": "TSXPER",
   "license": "MIT",
   "scripts": {
-    "test": "npx jest --ci --testMatch '**/test.*.js' && node test.esm.mjs",
+    "test": "npx jest --ci --testMatch '**/test.cjs.js' && node test.esm.mjs",
+    "test:browser": "npx testcafe",
     "link-local": "cd ../dist && npm link && cd ../e2e && rm -rf node_modules && npm link @tsxper/crc32"
   }
 }

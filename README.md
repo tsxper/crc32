@@ -8,6 +8,16 @@ Speed optimization is done through using pre-calculated values from lookup table
 
 [Release Notes](./NOTES.md).
 
+### Performance
+
+Performance totally depends on the hardware.
+Results below are made on a very basic hardware with NodeJS v18.16.0, IntelCore i5 1.6 GHz CPU and DDR3 RAM.
+
+| Processor | Rate | CRC32OPS | Input | Time |
+| --- | --- | --- | --- | --- |
+| CRC32 | 1.2047 Gbit/s | 147059 | 10K random 1024-Bytes items | 68 msec |
+| CRC32Streams | 850.1594 Mbit/s | - | 100MB random data file | 941 msec |
+
 ### Compatibility
 
 ```JavaScript

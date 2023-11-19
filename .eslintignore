@@ -4,3 +4,4 @@ e2e
 **/*.js
 __tests__
 *.spec.ts
+performance
