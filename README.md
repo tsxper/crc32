@@ -35,6 +35,14 @@ class CRC32Streams
 "@tsxper/crc32" package is originally written in TypeScript.
 TypeScript type definitions are included.
 
+### UTF-8 Support
+
+UTF8 characters are fully supported.
+
+```JavaScript
+crc32.calculate('español sí');
+```
+
 ### Transitive Dependencies
 None.
 
@@ -72,29 +80,54 @@ const crc32 = new CRC32Streams();
 const checksum = await crc32.forFile(filePath);
 ```
 
-### In Browser
+### Calculate CRC32 For String or File In Browser 
 
 See "Compatibility".
 
 ***HTML Copy/Paste Example***
+
+> This example also shows how to calculate CRC32 for ArrayBuffer.
 
 ```html
 <!DOCTYPE html>
 <html>
 <body>
   <p>Calculating crc32 for text "hello crc32": <span id="placeholder"></span></p>
+  <div>
+    <input type="file" id="input" />
+    <p>CRC32 of the file: <span id="filecrc32"></span></p>
+  </div>
   <script type="importmap">
     {
       "imports": {
-        "@tsxper/crc32": "https://www.unpkg.com/@tsxper/crc32@2.0.0/esm/CRC32.js"
+        "@tsxper/crc32": "https://www.unpkg.com/@tsxper/crc32@2.1.0/esm/CRC32.js"
       }
     }
   </script>
   <script type="module">
     import { CRC32 } from "@tsxper/crc32";
     const crc32 = new CRC32();
-    const crc = crc32.calculate("hello crc32");
-    document.getElementById('placeholder').innerText = crc;
+
+    function handleString() {
+      const crc = crc32.calculate("hello crc32");
+      document.getElementById('placeholder').innerText = crc;
+    }
+    handleString();
+
+    const fileInput = document.getElementById("input");
+    fileInput.addEventListener("change", handleFiles, false);
+
+    function handleFiles(e) {
+      if (!this.files.length) return;
+      const file = this.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const buffer = e.target.result; // ArrayBuffer
+        const view = new Uint8Array(buffer);
+        document.getElementById('filecrc32').innerText = crc32.forBytes(view);
+      };
+      reader.readAsArrayBuffer(file);
+    }
   </script>
 </body>
 </html>
@@ -114,6 +147,14 @@ for (const chunk of chunks) {
 
 ```
 
+### Convert CRC32 decimal to hexadecimal
+
+```JavaScript
+const crc32 = new CRC32();
+const checksum10 = crc32.calculate("hi"); // 3633523372
+const checksum16 = `0x${checksum10.toString(16)}`; // 0xd8932aac
+```
+
 ## Supporting CommonJS and ECMAScript modules
 
 Both, CommonJS and ESM modules are supported.
@@ -125,6 +166,10 @@ const { CRC32 } = require('@tsxper/crc32');
 ```
 
 Supporting of the both module systems is done through "import", "require" and "default" conditions.
+
+## License
+
+MIT License.
 
 ## Links
 + [Implementing CRC32 in TypeScript](https://medium.com/@vbabak/implementing-crc32-in-typescript-ff3453a1a9e7).

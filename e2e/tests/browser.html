@@ -2,18 +2,41 @@
 <html>
 <body>
   <p>Calculating crc32 for text "hello crc32": <span id="placeholder"></span></p>
+  <div>
+    <input type="file" id="input" />
+    <p>CRC32 of the file: <span id="filecrc32"></span></p>
+  </div>
   <script type="importmap">
     {
       "imports": {
-        "@tsxper/crc32": "https://www.unpkg.com/@tsxper/crc32@2.0.0/esm/CRC32.js"
+        "@tsxper/crc32": "https://www.unpkg.com/@tsxper/crc32@2.1.0/esm/CRC32.js"
       }
     }
   </script>
   <script type="module">
     import { CRC32 } from "@tsxper/crc32";
     const crc32 = new CRC32();
-    const crc = crc32.calculate("hello crc32");
-    document.getElementById('placeholder').innerText = crc;
+
+    function handleString() {
+      const crc = crc32.calculate("hello crc32");
+      document.getElementById('placeholder').innerText = crc;
+    }
+    handleString();
+
+    const fileInput = document.getElementById("input");
+    fileInput.addEventListener("change", handleFiles, false);
+
+    function handleFiles(e) {
+      if (!this.files.length) return;
+      const file = this.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const buffer = e.target.result; // ArrayBuffer
+        const view = new Uint8Array(buffer);
+        document.getElementById('filecrc32').innerText = crc32.forBytes(view);
+      };
+      reader.readAsArrayBuffer(file);
+    }
   </script>
 </body>
 </html>

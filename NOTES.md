@@ -1,6 +1,12 @@
 # RELEASE NOTES
 
-## v2.0.2
+## v2.1.1
+
+### Improved
+
+- Documentation. Added examples with UTF-8, hexadecimal output, CRC32 of the file in a browser.
+
+## v2.1.0
 
 ### Added
 

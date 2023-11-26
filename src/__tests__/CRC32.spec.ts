@@ -8,6 +8,7 @@ describe('Test CRC32', () => {
     ['Running from command line', 1207362252],
     ['actions/checkout@v4', 1785145639],
     ['hello crc32', 2560021400],
+    ['español sí', 2026633238],
   ];
 
   it.each(checksums)('Calculate crc32 for "%s"', (input: string, expected: number) => {
