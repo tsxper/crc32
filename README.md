@@ -1,5 +1,10 @@
 # CRC32
 
+[![NPM Version](https://img.shields.io/npm/v/@tsxper/crc32.svg?style=flat-square)](https://www.npmjs.com/package/@tsxper/crc32)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+![npm type definitions](https://img.shields.io/npm/types/@tsxper/crc32)
+[![NPM Downloads](https://img.shields.io/npm/dt/@tsxper/crc32.svg?style=flat-square)](https://www.npmjs.com/package/@tsxper/crc32)
+
 Cycle Redundancy Check 32 (CRC32).
 
 Calculates unsigned 32 bit checksum for ***0xEDB88320*** polynomial.
