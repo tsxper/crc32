@@ -1,6 +1,6 @@
 {
   "name": "@tsxper/crc32",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Calculates unsigned CRC32. Optimized Cycle Redundancy Check.",
   "author": "Vladyslav Babak",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "default": "./esm/index.js"
   },
   "main": "./esm/index.js",
-  "types": "./types/CRC32.d.ts",
+  "types": "./types/index.d.ts",
   "scripts": {
     "test": "jest",
     "test:ci": "jest --ci",
